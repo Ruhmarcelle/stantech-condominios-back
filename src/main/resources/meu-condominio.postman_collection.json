@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "3480d4bb-e8d8-4700-a5dd-8de3af204de6",
+		"name": "meu-condominio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20045425"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Consultar Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/meucondominio/login/ruhmarcelle@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"meucondominio",
+								"login",
+								"ruhmarcelle@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ruhmarcelle@gmail.com\",\r\n    \"senha\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/meucondominio/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"meucondominio",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cadastro",
+			"item": [
+				{
+					"name": "Consultar Cadastro",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/meucondominio/cadastro/ruhmarcelle@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"meucondominio",
+								"cadastro",
+								"ruhmarcelle@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Morador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ruhmarcelle@gmail.com\",\r\n    \"cpf\": \"111.111.111.-11\",\r\n    \"nome\": \"Ruh\",\r\n    \"contato\": \"1198765432\",\r\n    \"morador\": {\r\n        \"bloco\": \"A\",\r\n        \"apartamento\": \"1\"\r\n    },\r\n    \"login\": {\r\n        \"senha\": \"teste\"\r\n    },\r\n    \"dataCadastro\": \"2018-09-26T10:36:40.999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/meucondominio/cadastro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"meucondominio",
+								"cadastro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
