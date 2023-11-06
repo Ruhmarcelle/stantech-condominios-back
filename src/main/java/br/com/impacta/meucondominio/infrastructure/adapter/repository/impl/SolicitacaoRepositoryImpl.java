@@ -1,6 +1,7 @@
 package br.com.impacta.meucondominio.infrastructure.adapter.repository.impl;
 
 
+import br.com.impacta.meucondominio.domain.exception.SolicitacaoNaoEncontradaException;
 import br.com.impacta.meucondominio.domain.model.Solicitacao;
 import br.com.impacta.meucondominio.domain.port.out.SolicitacaoRepository;
 import br.com.impacta.meucondominio.infrastructure.adapter.repository.SolicitacaoMongoRepository;
@@ -9,12 +10,16 @@ import br.com.impacta.meucondominio.infrastructure.mapper.InfrastructureSolicita
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import static java.util.Objects.isNull;
+
 @Component
 @RequiredArgsConstructor
 public class SolicitacaoRepositoryImpl implements SolicitacaoRepository {
 
     private final SolicitacaoMongoRepository solicitacaoMongoRepository;
     private final InfrastructureSolicitacaoMapper infrastructureSolicitacaoMapper;
+
+    private String mensagemSolicitacaoNaoEcontrada = "Solicitação %s não encontrada !";
 
     @Override
     public void salvar(Solicitacao solicitacao) {
@@ -25,7 +30,11 @@ public class SolicitacaoRepositoryImpl implements SolicitacaoRepository {
     @Override
     public Solicitacao consultar(String idSolicitacao) {
 
-        var optSolicitacaoEntity = solicitacaoMongoRepository.findByIdSolicitacao(idSolicitacao);
-        return infrastructureSolicitacaoMapper.solicitacaoEntityToSolicitacao(optSolicitacaoEntity);
+        var solicitacaoEntity = solicitacaoMongoRepository.findByIdSolicitacao(idSolicitacao);
+
+        if (isNull(solicitacaoEntity))
+            throw new SolicitacaoNaoEncontradaException(String.format(mensagemSolicitacaoNaoEcontrada, idSolicitacao));
+
+        return infrastructureSolicitacaoMapper.solicitacaoEntityToSolicitacao(solicitacaoEntity);
     }
 }

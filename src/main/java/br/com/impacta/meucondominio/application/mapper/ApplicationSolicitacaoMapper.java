@@ -6,6 +6,8 @@ import br.com.impacta.meucondominio.domain.model.Solicitacao;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @NoArgsConstructor
 public class ApplicationSolicitacaoMapper {
@@ -23,6 +25,13 @@ public class ApplicationSolicitacaoMapper {
 
     public SolicitacaoResponseDTO solicitacaoToSolicitacaoResponseDTO(Solicitacao solicitacao){
         return SolicitacaoResponseDTO.builder()
+                .idSolicitacao(solicitacao.getIdSolicitacao())
+                .email(solicitacao.getEmail())
+                .assunto(solicitacao.getAssunto())
+                .setor(solicitacao.getSetor())
+                .areaComum(solicitacao.getAreaComum())
+                .descricao(solicitacao.getDescricao())
+                .dataSolicitacao(solicitacao.getDataSolicitacao())
                 .mensagem(solicitacao.getMenssagem())
                 .build();
     }

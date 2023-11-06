@@ -30,6 +30,6 @@ public class SolicitacaoFacadeImpl implements SolicitacaoFacade {
     public SolicitacaoResponseDTO consultar(String idSolicitacao) {
 
         var solicitacao = solicitacaoService.consultar(idSolicitacao);
-        return mapper.solicitacaoToSolicitacaoResponseDTO(solicitacaoService.salvar(solicitacao));
+        return mapper.solicitacaoToSolicitacaoResponseDTO(solicitacaoService.consultar(idSolicitacao));
     }
 }

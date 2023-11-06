@@ -1,8 +1,10 @@
 package br.com.impacta.meucondominio.application.in.controller.advice;
 
 import br.com.impacta.meucondominio.application.dto.response.ErroResponseDTO;
+import br.com.impacta.meucondominio.domain.exception.ApiErros;
 import br.com.impacta.meucondominio.domain.exception.LoginException;
 import br.com.impacta.meucondominio.domain.exception.RegraNegocioException;
+import br.com.impacta.meucondominio.domain.exception.SolicitacaoNaoEncontradaException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,6 +23,13 @@ public class ApplicationControllerAdvice {
 		String mensagemErro = ex.getMessage();
 		
 		return new ErroResponseDTO(mensagemErro);
+	}
+
+	@ExceptionHandler(SolicitacaoNaoEncontradaException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ApiErros handleTransacaoNotFoundException(SolicitacaoNaoEncontradaException ex) {
+
+		return new ApiErros(ex.getMessage());
 	}
 
 	@ExceptionHandler(LoginException.class)
