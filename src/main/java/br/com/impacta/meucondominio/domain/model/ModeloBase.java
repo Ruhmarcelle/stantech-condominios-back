@@ -5,9 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
-
 @Data
 @SuperBuilder(toBuilder = true)
-public class Estados extends ModeloBase {
-    private String sigla;
+public class ModeloBase {
+    private int id;
+    private String nome;
 }

@@ -1,11 +1,12 @@
 package br.com.impacta.meucondominio.domain.enums;
 
 import br.com.impacta.meucondominio.domain.model.Estados;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.List;
 
 public enum EstadosEnum {
@@ -14,8 +15,11 @@ public enum EstadosEnum {
     RIO_JANEIRO(2, "Rio de Janeiro", "RJ"),
     MINAS_GERAIS(3, "Minas Gerais", "MG");
 
+    @Getter
     private int id;
+    @Getter
     private String nome;
+    @Getter
     private String sigla;
 
     EstadosEnum(int id, String nome, String sigla) {
@@ -24,13 +28,13 @@ public enum EstadosEnum {
         this.sigla = sigla;
     }
 
-    public static List<Estados> getEstados() {
-
-        ArrayList<Estados> lista = new ArrayList<>();
-
-        for (EstadosEnum estadosEnum : EstadosEnum.values()){
-            lista.add(new Estados(estadosEnum.id, estadosEnum.nome, estadosEnum.sigla));
-        }
-        return lista;
+    public static List getEstados() {
+        return Arrays.stream(EstadosEnum.values()).map(e -> {
+            return Estados.builder()
+                    .id(e.getId())
+                    .nome(e.getNome())
+                    .sigla(e.getSigla())
+                    .build();
+        }).toList();
     }
 }

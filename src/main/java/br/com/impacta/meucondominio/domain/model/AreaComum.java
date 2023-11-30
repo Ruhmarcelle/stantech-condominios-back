@@ -8,6 +8,5 @@ import lombok.experimental.SuperBuilder;
 
 @Data
 @SuperBuilder(toBuilder = true)
-public class Estados extends ModeloBase {
-    private String sigla;
+public class AreaComum extends ModeloBase {
 }
