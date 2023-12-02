@@ -10,16 +10,13 @@
 			"name": "Login",
 			"item": [
 				{
-					"name": "Consultar Login",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Validar-login",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n    \"email\" : \"ruhmarcelle@gmail.com\",\r\n    \"senha\" : \"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27,16 +24,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/meucondominio/login/ruhmarcelle@gmail.com",
+							"raw": "http://localhost:8081/meucondominio/login/validar",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"meucondominio",
 								"login",
-								"ruhmarcelle@gmail.com"
+								"validar"
 							]
 						}
 					},
@@ -57,12 +54,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/meucondominio/login",
+							"raw": "http://localhost:8081/meucondominio/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"meucondominio",
 								"login"
@@ -94,15 +91,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/meucondominio/cadastro/ruhmarcelle@gmail.com",
+							"raw": "http://localhost:8081/meucondominio/cadastro/consultar/ruhmarcelle@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"meucondominio",
 								"cadastro",
+								"consultar",
 								"ruhmarcelle@gmail.com"
 							]
 						}
@@ -116,7 +114,138 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"ruhmarcelle@gmail.com\",\r\n    \"cpf\": \"111.111.111.-11\",\r\n    \"nome\": \"Ruh\",\r\n    \"contato\": \"1198765432\",\r\n    \"morador\": {\r\n        \"bloco\": \"A\",\r\n        \"apartamento\": \"1\"\r\n    },\r\n    \"login\": {\r\n        \"senha\": \"teste\"\r\n    },\r\n    \"dataCadastro\": \"2018-09-26T10:36:40.999\"\r\n}",
+							"raw": "{\r\n    \"email\": \"ruhmarcelle@gmail.com\",\r\n    \"cpf\": \"111.111.111.-11\",\r\n    \"nome\": \"Ruh\",\r\n    \"contato\": \"1198765432\",\r\n    \"unidade\": {\r\n        \"bloco\": \"A\",\r\n        \"apartamento\": \"1\"\r\n    },\r\n    \"login\": {\r\n        \"senha\": \"123456\"\r\n    },\r\n    \"dataCadastro\": \"2018-09-26T10:36:40.999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/cadastro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"cadastro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solicitação",
+			"item": [
+				{
+					"name": "Consultar Solicitação",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/solicitacao/consultar/CO1A42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"solicitacao",
+								"consultar",
+								"CO1A42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/solicitacao/listar/ruhmarcelle@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"solicitacao",
+								"listar",
+								"ruhmarcelle@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Solicitação",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ruhmarcelle@gmail.com\",\r\n    \"setor\": {\r\n        \"id\": 0,\r\n        \"nome\": \"ADMINISTRACAO\"\r\n    },\r\n    \"area_comum\": {\r\n        \"id\": 0,\r\n        \"nome\": \"Garagem\"\r\n    },\r\n    \"assunto\": \"estacionamento\",\r\n    \"descricao\": \"Carro do vizinho ap 15 está estacionado na vaga incorreta\",\r\n    \"data_solicitacao\": \"2018-09-26 10:36:40\",\r\n    \"status_solicitacao\" : \"EM_ABERTO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/solicitacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"solicitacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Solicitação",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ruhmarcelle@gmail.com\",\r\n    \"cpf\": \"111.111.111.-11\",\r\n    \"nome\": \"Ruh\",\r\n    \"contato\": \"1198765432\",\r\n    \"unidade\": {\r\n        \"bloco\": \"A\",\r\n        \"apartamento\": \"1\"\r\n    },\r\n    \"login\": {\r\n        \"senha\": \"123456\"\r\n    },\r\n    \"dataCadastro\": \"2018-09-26T10:36:40.999\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,6 +262,120 @@
 							"path": [
 								"meucondominio",
 								"cadastro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estados",
+			"item": [
+				{
+					"name": "Consultar Estados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/estados/consultar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"estados",
+								"consultar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Area Comum",
+			"item": [
+				{
+					"name": "Consultar Area Comum",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/area-comum/consultar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"area-comum",
+								"consultar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Setor",
+			"item": [
+				{
+					"name": "Consultar Setor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/meucondominio/setor/consultar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"meucondominio",
+								"setor",
+								"consultar"
 							]
 						}
 					},
