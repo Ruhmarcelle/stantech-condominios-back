@@ -19,6 +19,7 @@ public class InfrastructureLoginMapper {
     public LoginEntity loginToLoginEntity(Login login){
 
         return LoginEntity.builder()
+                .id(login.getId())
                 .email(login.getEmail())
                 .senha(login.getSenha())
                 .build();

@@ -1,5 +1,6 @@
 package br.com.impacta.meucondominio.infrastructure.entity;
 
+import br.com.impacta.meucondominio.domain.enums.StatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,15 +25,19 @@ public class SolicitacaoEntity {
     public static final String SEQUENCE_NAME = "solicitacao_sequence";
 
     @Id
+    private Long id;
+
     private String email;
 
     @Indexed(unique = true)
     private String idSolicitacao;
 
     private String assunto;
-    private String setor;
-    private String areaComum;
+    private int setor;
+    private int areaComum;
     private String descricao;
+
     private LocalDateTime dataSolicitacao;
+    private StatusEnum statusSolicitacao;
 
 }

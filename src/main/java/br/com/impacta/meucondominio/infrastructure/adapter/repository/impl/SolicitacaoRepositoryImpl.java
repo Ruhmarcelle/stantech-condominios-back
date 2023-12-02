@@ -10,6 +10,8 @@ import br.com.impacta.meucondominio.infrastructure.mapper.InfrastructureSolicita
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 import static java.util.Objects.isNull;
 
 @Component
@@ -36,5 +38,12 @@ public class SolicitacaoRepositoryImpl implements SolicitacaoRepository {
             throw new SolicitacaoNaoEncontradaException(String.format(mensagemSolicitacaoNaoEcontrada, idSolicitacao));
 
         return infrastructureSolicitacaoMapper.solicitacaoEntityToSolicitacao(solicitacaoEntity);
+    }
+
+    @Override
+    public List<Solicitacao> listar(String email) {
+
+        var listaSolicitacao = solicitacaoMongoRepository.findByEmail(email);
+        return infrastructureSolicitacaoMapper.listSolicitacaoEntityTolistSolicitacao(listaSolicitacao);
     }
 }

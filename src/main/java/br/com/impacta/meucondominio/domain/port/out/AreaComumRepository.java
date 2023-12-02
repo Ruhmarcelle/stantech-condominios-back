@@ -7,4 +7,5 @@ import java.util.List;
 public interface AreaComumRepository {
 
     public List<AreaComum> consultar();
+    public AreaComum consultarAreaComum(int id);
 }

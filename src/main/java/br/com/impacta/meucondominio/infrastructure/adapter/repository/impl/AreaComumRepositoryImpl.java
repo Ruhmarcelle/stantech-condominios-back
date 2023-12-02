@@ -21,6 +21,11 @@ public class AreaComumRepositoryImpl implements AreaComumRepository {
 
     @Override
     public List<AreaComum> consultar() {
-        return AreaComumEnum.getAreaComum();
+        return AreaComumEnum.listarAreaComum();
+    }
+
+    @Override
+    public AreaComum consultarAreaComum(int id) {
+        return AreaComumEnum.getAreaComum(id);
     }
 }

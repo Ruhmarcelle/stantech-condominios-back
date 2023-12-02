@@ -14,6 +14,10 @@ public class SetorRepositoryImpl implements SetorRepository {
 
     @Override
     public List<Setor> consultar() {
-        return SetorEnum.getSetor();
+        return SetorEnum.listarSetor();
+    }
+    @Override
+    public Setor consultarSetor(int id) {
+        return SetorEnum.getSetor(id);
     }
 }

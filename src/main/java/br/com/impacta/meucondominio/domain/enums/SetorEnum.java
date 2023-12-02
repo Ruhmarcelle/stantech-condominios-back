@@ -8,12 +8,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum SetorEnum {
 
-    ADMINISTRACAO(1, "Administração"),
-    LIMPEZA(2, "Limpeza"),
-    MANUTENCAO(3, "Manutenção");
+    ADMINISTRACAO(0, "Administração"),
+    LIMPEZA(1, "Limpeza"),
+    MANUTENCAO(2, "Manutenção");
 
     @Getter
     private int id;
@@ -25,12 +26,15 @@ public enum SetorEnum {
         this.nome = nome;
     }
 
-    public static List getSetor() {
+    public static Setor getSetor(int id){
+        return listarSetor().get(id);
+    }
+    public static List<Setor> listarSetor() {
         return Arrays.stream(SetorEnum.values()).map(e -> {
             return Setor.builder()
                     .id(e.getId())
                     .nome(e.getNome())
                     .build();
-        }).toList();
+        }).collect(Collectors.toList());
     }
 }

@@ -2,7 +2,7 @@ package br.com.impacta.meucondominio.domain.enums;
 
 public enum StatusEnum {
 
-    ADMINISTRACAO("Aberto"),
+    EM_ABERTO("Aberto"),
     EM_ANÁLISE("Em análise"),
     CONCUIDO("Concluído"),
     CANCELADO("Cancelado");

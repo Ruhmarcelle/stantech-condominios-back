@@ -20,12 +20,14 @@ public class LoginRepositoryImpl implements LoginRepository {
 
         var loginEntity = mapper.loginToLoginEntity(login);
         loginMongoRepository.save(loginEntity);
-
     }
 
     @Override
     public Login consultar(String email) {
-        var optLogin = loginMongoRepository.findById(email);
-        return mapper.LoginEntityToLogin(optLogin.get());
+        var loginEntity = loginMongoRepository.findByEmail(email);
+
+        if(loginEntity != null)
+            return mapper.LoginEntityToLogin(loginEntity);
+        return null;
     }
 }

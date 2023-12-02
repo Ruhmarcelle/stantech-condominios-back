@@ -8,4 +8,5 @@ import java.util.List;
 public interface SetorRepository {
 
     public List<Setor> consultar();
+    public Setor consultarSetor(int id);
 }

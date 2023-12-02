@@ -14,7 +14,8 @@ public class CadastroServiceImpl implements CadastroService {
 
     private final CadastroRepository cadastroRepository;
     private final LoginRepository loginRepository;
-    private final LoginService LoginService;
+
+    private final LoginService loginService;
 
     @Override
     public Cadastro consultar(String email) {
@@ -24,6 +25,6 @@ public class CadastroServiceImpl implements CadastroService {
     @Override
     public void salvar(Cadastro cadastro) {
         cadastroRepository.salvar(cadastro);
-        loginRepository.salvar(cadastro.getLogin());
+        loginService.salvar(cadastro.getLogin());
     }
 }

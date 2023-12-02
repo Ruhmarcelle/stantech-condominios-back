@@ -25,4 +25,10 @@ public class SolicitacaoController {
     public ResponseEntity consultar(@PathVariable String idSolicitacao){
         return ResponseEntity.ok(solicitacaoFacade.consultar(idSolicitacao));
     }
+
+    @GetMapping("/listar/{email}")
+    public ResponseEntity listar(@PathVariable String email){
+        return ResponseEntity.ok(solicitacaoFacade.listar(email));
+    }
+
 }

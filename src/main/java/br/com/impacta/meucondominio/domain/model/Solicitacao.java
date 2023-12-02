@@ -1,5 +1,6 @@
 package br.com.impacta.meucondominio.domain.model;
 
+import br.com.impacta.meucondominio.domain.enums.StatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -12,18 +13,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.awt.geom.Area;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Data
 @Builder
 public class Solicitacao {
+    private Long id;
     private String email;
     private String idSolicitacao;
     private String assunto;
-    private String setor;
-    private String areaComum;
+    private Setor setor;
+    private AreaComum areaComum;
     private String descricao;
     private LocalDateTime dataSolicitacao;
     private String menssagem;
+    private StatusEnum statusSolicitacao;
 }
